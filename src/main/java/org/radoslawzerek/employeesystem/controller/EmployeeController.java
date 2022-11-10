@@ -38,15 +38,15 @@ public class EmployeeController {
 
     @GetMapping("/edit/{id}")
     public String edit(@PathVariable Long id, Model model) {
-        Employee e = service.getEmpById(id);
-        model.addAttribute("emp", e);
+        Employee employee = service.getEmpById(id);
+        model.addAttribute("emp", employee);
         return "edit";
     }
 
     @PostMapping("/update")
     public String updateEmp(@ModelAttribute Employee employee, HttpSession session) {
         service.addEmp(employee);
-        session.setAttribute("msg", "Emp Data Update Sucessfully..");
+        session.setAttribute("msg", "Employee Data Update Sucessfully..");
         return "redirect:/";
     }
 
@@ -54,7 +54,7 @@ public class EmployeeController {
     public String deleteEmp(@PathVariable Long id, HttpSession session) {
 
         service.deleteEmp(id);
-        session.setAttribute("msg", "Emp Data Delete Sucessfully..");
+        session.setAttribute("msg", "Employee Data Delete Sucessfully..");
         return "redirect:/";
     }
 
