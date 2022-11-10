@@ -20,7 +20,7 @@
 
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-    <a class="navbar-brand" href="#">EMP System</a>
+    <a class="navbar-brand" href="#">Employee Management System</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse"
             data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -34,7 +34,7 @@
                 <span class="sr-only">(current)</span>
             </a></li>
             <li class="nav-item active"><a class="nav-link" href="addemp">Add
-                EMP</a></li>
+                Employee</a></li>
 
         </ul>
     </div>
@@ -69,7 +69,7 @@
             <td th:text="${e.name}"></td>
             <td th:text="${e.address}"></td>
             <td th:text="${e.email}"></td>
-            <td th:text="${e.phno}"></td>
+            <td th:text="${e.phone}"></td>
             <td th:text="${e.salary}"></td>
             <td><a class="btn btn-sm btn-primary"
                    th:href="@{/edit/{id}(id=${e.id})}">Edit</a> <a

@@ -20,8 +20,8 @@ public class EmployeeController {
     private EmployeeService service;
 
     @GetMapping("/")
-    public String home(Model m) {
-        return findPaginated(0, m);
+    public String home(Model model) {
+        return findPaginated(0, model);
     }
 
     @GetMapping("/addemp")
@@ -30,22 +30,22 @@ public class EmployeeController {
     }
 
     @PostMapping("/register")
-    public String empRegister(@ModelAttribute Employee e, HttpSession session) {
-        service.addEmp(e);
+    public String empRegister(@ModelAttribute Employee employee, HttpSession session) {
+        service.addEmp(employee);
         session.setAttribute("msg", "Emplyoee Added Sucessfully..");
         return "redirect:/";
     }
 
     @GetMapping("/edit/{id}")
-    public String edit(@PathVariable Long id, Model m) {
+    public String edit(@PathVariable Long id, Model model) {
         Employee e = service.getEmpById(id);
-        m.addAttribute("emp", e);
+        model.addAttribute("emp", e);
         return "edit";
     }
 
     @PostMapping("/update")
-    public String updateEmp(@ModelAttribute Employee e, HttpSession session) {
-        service.addEmp(e);
+    public String updateEmp(@ModelAttribute Employee employee, HttpSession session) {
+        service.addEmp(employee);
         session.setAttribute("msg", "Emp Data Update Sucessfully..");
         return "redirect:/";
     }
@@ -58,14 +58,14 @@ public class EmployeeController {
         return "redirect:/";
     }
 
-    @GetMapping("/page/{pageno}")
-    public String findPaginated(@PathVariable int pageno, Model m) {
+    @GetMapping("/page/{pagenum}")
+    public String findPaginated(@PathVariable int pagenum, Model model) {
 
-        Page<Employee> emplist = service.getEMpByPaginate(pageno, 2);
-        m.addAttribute("emp", emplist);
-        m.addAttribute("currentPage", pageno);
-        m.addAttribute("totalPages", emplist.getTotalPages());
-        m.addAttribute("totalItem", emplist.getTotalElements());
+        Page<Employee> employeeList = service.getEmpByPaginate(pagenum, 2);
+        model.addAttribute("emp", employeeList);
+        model.addAttribute("currentPage", pagenum);
+        model.addAttribute("totalPages", employeeList.getTotalPages());
+        model.addAttribute("totalItem", employeeList.getTotalElements());
         return "index";
     }
 }

@@ -8,7 +8,6 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -19,10 +18,6 @@ public class EmployeeService {
 
     public void addEmp(Employee employee) {
         repository.save(employee);
-    }
-
-    public List<Employee> getAllEmp() {
-        return repository.findAll();
     }
 
     public Employee getEmpById(Long id) {
@@ -37,7 +32,7 @@ public class EmployeeService {
         repository.deleteById(id);
     }
 
-    public Page<Employee> getEMpByPaginate(int currentPage, int size) {
+    public Page<Employee> getEmpByPaginate(int currentPage, int size) {
         Pageable p = PageRequest.of(currentPage, size);
         return repository.findAll(p);
     }
