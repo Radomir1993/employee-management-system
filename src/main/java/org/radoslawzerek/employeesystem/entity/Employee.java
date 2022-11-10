@@ -10,7 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-@Entity(name = "EMP_SYSTEM")
+@Entity
 @NoArgsConstructor
 @Getter
 @Setter
